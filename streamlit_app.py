@@ -52,6 +52,7 @@ if streamlit.button('Get Fruit Load List'):
     my_data_row = get_fruit_load_list()
     streamlit.dataframe(my_data_row)
 
-add_my_fruit = streamlit.text_input('What fruit would you like to Add','Kiwi')
-streamlit.write('Thanks for adding : ' ,add_my_fruit)
-my_cur.execute("Insert Into fruit_load_list values ('from Streamlit')")
+add_my_fruit = streamlit.text_input('What fruit would you like to Add')
+if streamlit.button('Add Fruit to List'):
+    my_cur.execute("Insert Into fruit_load_list values (add_my_fruit)")
+    streamlit.write('Thanks for adding : ' ,add_my_fruit)
